@@ -10,6 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
+@Table(name="shows")
 public class Show extends BaseModel{
 
     @ManyToOne
@@ -18,11 +19,10 @@ public class Show extends BaseModel{
     private Long startTime;
     private Long endTime;
 
-
     @ManyToOne
     private Screen screen;
 
+    @ElementCollection(targetClass = Feature.class)
     @Enumerated(EnumType.ORDINAL)
-    @ElementCollection
     private List<Feature> features;
 }
